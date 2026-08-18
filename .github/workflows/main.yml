@@ -14,9 +14,9 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Ripristina i pacchetti
-        run: dotnet restore
+        run: dotnet restore -p:EnableWindowsTargeting=true
       - name: Compila l'eseguibile self-contained per Windows
-        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o output
+        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableWindowsTargeting=true -o output
       - name: Carica l'exe come artifact scaricabile
         uses: actions/upload-artifact@v4
         with:
